@@ -1,0 +1,58 @@
+{
+  "name": "estudiadesarrollando",
+  "displayName": "CodeMentor AI",
+  "description": "Asistente de aprendizaje contextual para Visual Studio Code.",
+  "version": "0.0.1",
+  "publisher": "your-name",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:codementor.startMentor",
+    "onCommand:codementor.explainSelection",
+    "onCommand:codementor.openMentorPanel",
+    "*"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codementor.startMentor",
+        "title": "CodeMentor: Iniciar Mentor"
+      },
+      {
+        "command": "codementor.explainSelection",
+        "title": "CodeMentor: Explicar Selección"
+      },
+      {
+        "command": "codementor.openMentorPanel",
+        "title": "CodeMentor: Abrir Panel de Mentor"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "codementor.explainSelection",
+          "when": "editorTextFocus && !editorReadonly",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "codementor.startMentor",
+          "when": "true"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "watch": "tsc -watch -p ./",
+    "postinstall": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0"
+  }
+}
